@@ -1,0 +1,68 @@
+<div class="LoginArea LoginReverse d-flex justify-content-center">
+    <!-- <div class="LoginLeft">
+        <aside>
+            <figure><img src="assets/images/travel.jpg" /></figure>
+            <h3>Lorem Ipsum is simply</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever.</p>
+        </aside>
+    </div> -->
+
+    <div class="LoginRight">
+        <aside>
+            <h1>Register</h1>
+            <h6>Please enter your name , email and password below to
+                register your account.</h6>
+            <form action="" [formGroup]="formGroup">
+
+
+
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input formControlName="name"  type="text" class="form-control"
+                        placeholder="Enter your name">
+                </div>
+                @if((formGroup.get('name')?.hasError('required') && (formGroup.get('name')?.dirty))|| (formInvalid && !this.formGroup.value.name)){ 
+                    <div class="text-danger">
+                    *Name is required
+                </div>
+                }
+             
+
+
+
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input formControlName="email" type="email" class="form-control" placeholder="Enter Your Email">
+                </div> 
+                @if((formGroup.get('email')?.hasError('required') && (formGroup.get('email')?.dirty))|| (formInvalid && !this.formGroup.value.email)){
+                    <div class="text-danger" >
+                        *Email is required
+                    </div>
+                }
+          
+                @if((formGroup.get('email')?.hasError('pattern') && (formGroup.get('email')?.dirty))){
+                    <div class="text-danger" >
+                        *Please enter valid email id
+                    </div>
+                }
+          
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input formControlName="newPassword" #x type="password" class="form-control"
+                        placeholder="Enter Password">
+                </div>
+
+                @if((formGroup.get('newPassword')?.hasError('required') && (formGroup.get('newPassword')?.dirty))|| (formInvalid && !this.formGroup.value.newPassword)){
+                    <div class="text-danger">
+                    *Password is required
+                </div>
+                }
+             
+                <!-- <h5><a>Forgot Password ?</a></h5> -->
+                <button (click)="onSave()">Register</button>
+            </form>
+            <h4>Already have an account? <a [routerLink]="['/voyageur/se-connecter']">Login</a></h4>
+        </aside>
+    </div>
+</div>

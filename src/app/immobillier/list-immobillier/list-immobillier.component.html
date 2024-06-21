@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>List Immobilier</h2>
+  
+
+  <div class="create-button">
+    <button (click)="navigateToEdit()">Créer un nouveau bien</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nom du bien</th>
+        <th>Date de création</th>
+        <th>Photo</th>
+        <th>Prix</th>
+        <th>Prestation</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let property of properties">
+        <td>{{ property.name }}</td>
+        <td>{{ property.date }}</td>
+        <td><img [src]="property.photo" alt="Photo" width="50"></td>
+        <td>{{ property.price }}</td>
+        <td>{{ property.service }}</td>
+        <td>
+          <div class="button-group">
+            <button (click)="manageProperty(property.id)">Gérer</button>
+            <button (click)="openCalendar(property.id)">Calendrier</button>
+            <button (click)="confirmDelete(property.id)">Supprimer</button>
+            <button (click)="editProperty(property.id)">Modifier</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

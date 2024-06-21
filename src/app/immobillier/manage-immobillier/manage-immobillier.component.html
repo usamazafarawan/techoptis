@@ -1,0 +1,55 @@
+<div class="container" *ngIf="property">
+  <h1>Gestion du bien : {{ property.name }}</h1>
+
+  
+  <div *ngIf="property.factures && property.factures.length > 0">
+    <h2>Factures</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Montant</th>
+          <th>Description</th>
+          <th>Actions</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let facture of property.factures">
+          <td>{{ facture.date }}</td>
+          <td>{{ facture.montant }} €</td>
+          <td>{{ facture.description }}</td>
+          <td>
+            <button (click)="downloadInvoice(facture)">Télécharger PDF</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+ 
+  <div *ngIf="property.interventions && property.interventions.length > 0">
+    <h2>Suivi des interventions</h2>
+    <ul>
+      <li *ngFor="let intervention of property.interventions">
+        {{ intervention.date }} : {{ intervention.description }}
+      </li>
+    </ul>
+    <button (click)="orderService()">Commander une prestation</button>
+  </div>
+
+  
+  <div *ngIf="property.revenue && property.expenses">
+    <h2>Récapitulatif des bénéfices et dépenses</h2>
+    <ul>
+      <li>Location : {{ property.revenue.location }} €</li>
+      <li>Dépenses prestation : {{ property.expenses.services }} €</li>
+      <li>Gain : {{ property.revenue.location - property.expenses.services }} €</li>
+    </ul>
+  </div>
+</div>
+
+il va contenir le tableau recapitulatif d'un seul bien immobillier
+facture 
+suivie des interventions 
+recap des gains et des depenses 
+bouton pour demande de devis prestations 

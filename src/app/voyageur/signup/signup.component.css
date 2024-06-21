@@ -1,0 +1,51 @@
+.LoginArea{display:flex;height:85vh}
+/* .LoginArea .LoginLeft{width:50%;background-color:rgb(86 224 224 / 15%);display:flex;align-items:center;justify-content:center}
+.LoginArea .LoginLeft aside{width:55%;text-align:center}
+.LoginArea .LoginLeft aside figure{width:240px;margin:0 auto 60px}
+.LoginArea .LoginLeft aside video{ margin: 0 0 20px; width: 100%; }
+.LoginArea .LoginLeft aside h3{font-size:23px;font-weight:700;margin:0 0 15px 0}
+.LoginArea .LoginLeft aside p{font-size:14px;line-height:25px;font-weight:500;color:#7d7d7d} */
+.LoginArea .LoginRight{width:50%; padding: 50px 0; display:flex;align-items:center;justify-content:center; position: relative;}
+.LoginArea .LoginRight aside{width:65%; position: relative; z-index: 9;}
+.LoginArea .LoginRight aside h5.Step{font-size:13px;margin:0 0 15px 0;color:#000;font-weight:600}
+.LoginArea .LoginRight aside h1{font-size:30px;font-weight:800;color:#000;margin:0 0 15px}
+.LoginArea .LoginRight aside h6{font-size:14px;line-height:21px}
+.LoginArea .LoginRight aside form{margin:30px 0 0 0}
+.LoginArea .LoginRight aside form .form-group{position:relative}
+.LoginArea .LoginRight aside form .form-group .Icon{position:absolute;top:40px;right:15px;width:20px}
+.LoginArea .LoginRight aside form .form-group label{display:block;color:#000;font-weight:600;font-size:14px}
+.LoginArea .LoginRight aside form .form-group label a{color:#1DA1F2;font-size:14px;font-weight:600;float:right}
+.LoginArea .LoginRight aside form .form-group .form-control{height:auto;padding:10px 50px 10px 15px;border:1px solid #ddd;border-radius:7px;box-shadow:none;font-weight:600;font-size:14px}
+.LoginArea .LoginRight aside form .form-group select{-webkit-appearance:none;-moz-appearance:none;appearance:none}
+.LoginArea .LoginRight aside form .form-group .Radio{margin: 0 0 20px 0; padding: 0 0 0 70px; font-size: 16px;}
+.LoginArea .LoginRight aside form .form-group .Radio span.Credit{position: absolute; top: -5px; left: 30px; width: 22px;}
+.LoginArea .LoginRight aside form .form-group .Radio input:checked~.Radiomark{ background-color: #fff; border: 1px solid #ddd;}
+.LoginArea .LoginRight aside form .form-group .Radio .Radiomark:after{top: 0; left: 0; right: 0; bottom: 0; width: 12px; height: 12px; border: none; background-color: #1DA1F2; border-radius: 15px;  transform: inherit; margin: auto;}
+.LoginArea .LoginRight aside form h5{text-align:right;margin:0 0 30px 0}
+.LoginArea .LoginRight aside form h5 a{color:#12B2B3;font-size:14px;font-weight:600}
+.LoginArea .LoginRight aside form h5 a:hover{color:#000}
+.LoginArea .LoginRight aside form .form-group+button{margin-top:15px}
+.LoginArea .LoginRight aside form button,
+.LoginArea .LoginRight aside button{width:100%;background-image:linear-gradient(45deg,#12b2b3,#56e0e0);border:none;font-size:18px;color:#fff;font-weight:700;padding:10px 0;border-radius:5px;transition:0.5s all ease-in-out;outline:0;display: flex; align-items: center; justify-content: center;}
+.LoginArea .LoginRight aside form button img,
+.LoginArea .LoginRight aside button img{width:16px;margin:0 0 0 7px}
+.LoginArea .LoginRight aside form button:hover,
+.LoginArea .LoginRight aside button:hover{background-position:0 90px}
+.LoginArea .LoginRight aside h4{margin:30px 0 0 0;text-align:center;font-size:15px;color:#9393AA;font-weight:700}
+.LoginArea .LoginRight aside h4 a{color:#12B2B3}
+ 
+.LoginArea .LoginRight.LocationBox{ display: block; }
+.LoginArea .LoginRight.LocationBox .Map{height:50vh;overflow:hidden;position:relative; margin: -50px 0 0 0;}
+.LoginArea .LoginRight.LocationBox .Map .Search{position:absolute;top:50px;left:0;width:55%;right:0;margin:auto}
+.LoginArea .LoginRight.LocationBox .Map .Search span{position:absolute;top:14px;width:15px;left:15px}
+.LoginArea .LoginRight.LocationBox .Map .Search input{height:auto;padding:13px 15px 13px 40px;border:1px solid #ddd;border-radius:7px;box-shadow:none;font-weight:600;font-size:14px}
+.LoginArea .LoginRight.LocationBox .Form{height:50vh;align-items:center;display:flex;justify-content:center}
+.LoginArea .LoginRight.LocationBox .Form aside form{margin:0}
+
+.LoginArea .LoginRight .BackButton{position: absolute; cursor: pointer; right: 0; color: #000; font-weight: 600; font-size: 16px; top: -10px;line-height: 10px; display: flex; align-items: center;}
+.LoginArea .LoginRight .BackButton i{ margin-right: 5px; }
+.LoginArea .LoginRight .BackButton:hover{ color: #12b2b3; }
+
+.Icon.Cross{ cursor: pointer; }
+.Icon.Cross:after{content: ''; position: absolute; top: -4px; width: 2px; height: 30px; background: #939299; transform: rotate(45deg); left: 10px;}
+.Icon.Cross.active:after{ content: none;}

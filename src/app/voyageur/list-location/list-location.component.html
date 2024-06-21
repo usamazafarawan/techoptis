@@ -1,0 +1,26 @@
+<div class="outer-section">
+  <div class="container-fluid">
+    <h2 class="text-center">Logement Disponible</h2>
+
+  
+    <div class="d-flex justify-content-end mb-3" role="group" aria-label="Basic outlined example">
+      <button type="button" class="btn btn-outline-primary mx-1" (click)="filterByCity('Nice')">Nice</button>
+      <button type="button" class="btn btn-outline-primary mx-1" (click)="filterByCity('Paris')">Paris</button>
+      <button type="button" class="btn btn-outline-primary mx-1" (click)="filterByCity('Bordeaux')">Bordeaux</button>
+      <button type="button" class="btn btn-outline-primary mx-1" (click)="filterByCity('Troyes')">Troyes</button>
+      <button type="button" class="btn btn-outline-primary mx-1" (click)="filterByCity('')">Toutes les villes</button>
+    </div>
+  
+    <div class="list-group">
+      <div *ngFor="let property of filteredProperties" class="list-group-item">
+        <h5>{{ property.name }}</h5>
+        <p>{{ property.description }}</p>
+        <p><strong>Prix:</strong> {{ property.price }} €</p>
+        <p><strong>Ville:</strong> {{ property.city }}</p>
+        <img [src]="property.photo" alt="Photo de {{ property.name }}" class="img-thumbnail" style="width: 150px;">
+        <a [routerLink]="['/voyageur/description', property.id]" class="btn btn-primary mt-3">Voir Détails</a>
+      </div>
+    </div>
+  </div>
+
+</div>

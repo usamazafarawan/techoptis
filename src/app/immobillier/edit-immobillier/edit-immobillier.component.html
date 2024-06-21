@@ -1,0 +1,41 @@
+<div class="container" *ngIf="property">
+  <h1>Modifier un bien immobilier</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Nom du bien :</label>
+      <input id="name" name="name" [(ngModel)]="property.name" required>
+    </div>
+    <div>
+      <label for="date">Date de création :</label>
+      <input id="date" name="date" type="date" [(ngModel)]="property.date" required>
+    </div>
+    <div>
+      <label for="photo">Photo du bien :</label>
+      <input id="photo" name="photo" type="file" (change)="onFileSelected($event)">
+    </div>
+    <div>
+      <label for="price">Prix :</label>
+      <input id="price" name="price" type="number" [(ngModel)]="property.price" required>
+    </div>
+    <div>
+      <label>Prestations :</label>
+      <div>
+        <label>
+          <input type="checkbox" name="menage" [(ngModel)]="property.services.menage">
+          Ménage
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="petitDejeuner" [(ngModel)]="property.services.petitDejeuner">
+          Petit déjeuner
+        </label>
+      </div>
+    </div>
+    <div>
+      <label for="description">Description :</label>
+      <textarea id="description" name="description" [(ngModel)]="property.description"></textarea>
+    </div>
+    <button type="submit">Valider</button>
+  </form>
+</div>

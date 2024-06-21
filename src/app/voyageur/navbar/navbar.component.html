@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="['/voyageur']">
+        <img src="assets/images/logo.png" alt="Company Logo" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="abonnement" routerLinkActive="active">Abonnement</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="chatbot" routerLinkActive="active">Chatbot</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="facture" routerLinkActive="active">Facture</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="facture-paiement" routerLinkActive="active">Facture Paiement</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="list-location" routerLinkActive="active">List Location</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="prestation" routerLinkActive="active">Prestation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="se-connecter" routerLinkActive="active">Réservation</a>
+          </li>
+          <li class="nav-item">
+            <form class="d-flex" (submit)="onSearch($event)">
+              <input class="form-control me-2" type="search" placeholder="Recherche..." aria-label="Search" [(ngModel)]="searchQuery">
+            </form>
+          </li>
+        </ul>
+        <img src="assets/images/bonhomme.png" alt="User Icon" class="user-icon ms-auto"  (click)="navigateToLogin()">
+      </div>
+    </div>
+  </nav>
+  
