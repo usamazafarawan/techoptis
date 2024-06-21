@@ -1,6 +1,24 @@
 <div class="outer-section">
-    <p>chatbot works!</p>
-    afficher la fenetre de chat pour parler au bot
+    <h3 class="d-flex justify-content-center mt-3">Bot de discussion
+    </h3>
+    
+<div class="container main">
+    @for (message of messages; track $index) {
+        <div class="message"
+        [ngClass]="{ 'from': message.author === 'bot',
+        'to': message.author === 'user' }">
+        {{ message.content }}
+        </div>
+    }
+
+    <label *ngIf="messages.length == 0; else dialogInfo" for="nameField">Your message</label>
+    <input [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text">
+    <button  type="button" class="btn btn-outline-primary mx-1 mt-2 " (click)="sendMessage()">Send</button>
+    <ng-template #dialogInfo>
+    <span [className]="'float-right'">Total messages: {{messages.length}}</span>
+    </ng-template>
+</div>
+
 
 </div>
 
