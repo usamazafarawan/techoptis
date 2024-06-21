@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { VoyageurService } from '../../voyageur.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,11 +16,13 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class NavbarComponent implements OnInit{
   searchQuery: string = '';
-  userProfile:any;
-  constructor(private router: Router) {}
+  userProfile:any=null;
+  constructor(private router: Router,private voyageurService: VoyageurService) {}
 
  ngOnInit(): void {
-    this.userProfile = JSON.parse(localStorage.getItem("userProfile") as any);
+    this.voyageurService.lognnInfo$.subscribe((userInfo)=>{
+     this.userProfile  = userInfo;
+    });
  }
   onSearch(event: Event): void {
     event.preventDefault();
@@ -31,5 +34,11 @@ export class NavbarComponent implements OnInit{
   }
   navigateToSignup(){
     this.router.navigate(['/voyageur/registre']);
+  }
+  logOut(){
+    this.userProfile = null;
+    this.voyageurService._lognnInfo.next(null)
+    localStorage.removeItem("userProfile");
+    this.router.navigate(['/voyageur/se-connecter']);
   }
 }

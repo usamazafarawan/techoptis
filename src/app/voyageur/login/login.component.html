@@ -31,11 +31,11 @@
                 </div>
                 <div class="form-group">
                     <label for="">Password</label>
-                    <input formControlName="newPassword" #x type="password" class="form-control"
+                    <input formControlName="password" #x type="password" class="form-control"
                         placeholder="Enter Password">
                     <!-- <span class="Icon Cross" (click)="x.type=x.type=='password'?'text':'password'"><img
                             src="assets/images/eye.png"></span> -->
-                            @if ((formGroup.get('newPassword')?.hasError('required') && (formGroup.get('newPassword')?.dirty))|| (formInvalid && !this.formGroup.value.newPassword)) {
+                            @if ((formGroup.get('password')?.hasError('required') && (formGroup.get('password')?.dirty))|| (formInvalid && !this.formGroup.value.password)) {
                               <div class="text-danger">
                                 *Password is required
                               </div>

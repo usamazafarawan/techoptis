@@ -174,7 +174,6 @@ description:'Pepe - Room with balcony, a property with a terrace, is located in 
         },
         {
           id:6,
-          name:'Villa Zdenko Apartment',
           area:'145 sq ft',
           city:'Bordeaux',
           date: '2023-07-01',

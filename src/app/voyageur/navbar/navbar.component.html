@@ -40,12 +40,17 @@
     </div>
   </nav>
   <mat-menu #menu="matMenu">
-    @if (!userProfile.email) {
-      <button mat-menu-item (click)="navigateToLogin()">Login</button>
-      <button mat-menu-item (click)="navigateToSignup()">Sign Up</button>
+    @if (!userProfile?.email) {
+      <button mat-menu-item  (click)="navigateToLogin()">Login <mat-icon>perm_identity</mat-icon>
+      </button>
+      <button mat-menu-item (click)="navigateToSignup()">Sign Up <mat-icon>person_add</mat-icon>
+      </button>
     } @else {
      <div>
-      <p class="p-2">{{userProfile.email}}</p>
+      <span  mat-menu-item class="p-2">Name:   {{userProfile.name}}</span>
+      <span  mat-menu-item class="p-2">E-Mail: {{userProfile.email}}</span>
+      <button mat-menu-item (click)="logOut()">Log out <mat-icon>exit_to_app</mat-icon></button>
+
      </div>
     }
   </mat-menu>
