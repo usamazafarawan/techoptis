@@ -23,6 +23,6 @@ export class NavbarComponent {
   }
 
   navigateToLogin(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/voyageur/se-connecter']);
   }
 }
