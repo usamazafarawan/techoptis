@@ -14,3 +14,14 @@ h2.text-center {
 .d-flex.justify-content-end {
   margin-bottom: 20px;
 }
+.property-images{
+  width: 200;
+  height: 50;
+  border-radius: 10%;
+
+}
+
+.detail{
+  font-weight: 400;
+  margin-left: 10px;
+}

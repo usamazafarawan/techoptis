@@ -11,7 +11,7 @@
       <button type="button" class="btn btn-outline-primary mx-1" (click)="filterByCity('')">Toutes les villes</button>
     </div>
   
-    <div class="list-group">
+    <!-- <div class="list-group">
       <div *ngFor="let property of filteredProperties" class="list-group-item">
         <h5>{{ property.name }}</h5>
         <p>{{ property.description }}</p>
@@ -20,7 +20,84 @@
         <img [src]="property.photo" alt="Photo de {{ property.name }}" class="img-thumbnail" style="width: 150px;">
         <a [routerLink]="['/voyageur/description', property.id]" class="btn btn-primary mt-3">Voir Détails</a>
       </div>
-    </div>
+    </div> -->
+
+    @for (property of filteredProperties; track $index) {
+    
+      <div class="container ">
+        <div class="row">
+          <div class="col-3">
+            <img class="property-images" src="{{property.photo}}">
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col">
+                <h3>{{property.name}}</h3>
+                <h6>Ratings
+                  <mat-icon style="color: #ffc107;">star</mat-icon>
+                  <mat-icon style="color: #ffc107;">star</mat-icon>
+                  <mat-icon style="color: #ffc107;">star</mat-icon>
+                  <mat-icon style="color: #ffc107;">star</mat-icon>
+                  <mat-icon>star</mat-icon>
+                </h6>
+                <div class="d-flex flex-column">
+                  <label>Area: <span class="detail">{{property.area}}</span> </label>
+                  <label>Rooms: <span class="detail">{{property.rooms}}</span> </label>
+                  <label>City: <span class="detail">{{property.city}}</span> </label>
+                  <label>Description: <span class="detail">{{property.description}}</span> </label>
+                </div>
+      
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="d-flex flex-column justify-content-center book-section mt-5">
+              <label class="d-flex justify-content-center">Price: <span class="detail">${{property.price}}</span> </label>
+              <button type="button" class="btn btn-success mx-1 mt-3">Book Now</button>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    }
+<!-- 
+    <div class="container ">
+      <div class="row">
+        <div class="col-3">
+          <img class="property-images" src="../../../assets/images/p-0.png">
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col">
+              <h3>Apartments Samsa - Borik</h3>
+              <h6>Ratings
+                <mat-icon style="color: #ffc107;">star</mat-icon>
+                <mat-icon style="color: #ffc107;">star</mat-icon>
+                <mat-icon style="color: #ffc107;">star</mat-icon>
+                <mat-icon style="color: #ffc107;">star</mat-icon>
+                <mat-icon>star</mat-icon>
+              </h6>
+              <div class="d-flex flex-column">
+                <label>Area: <span class="detail">120 sq ft</span> </label>
+                <label>Rooms: <span class="detail">5</span> </label>
+                <label>City: <span class="detail">Paris</span> </label>
+                <label>Description: <span class="detail">Pepe - Room with balcony, a property with a terrace, is located in
+                    Rovinj, 1.9 km from Mulini Beach, 2 km from Škaraba Beach, as well as 2.7 km from Cathedral St. Eufemia
+                    Rovinj.</span> </label>
+              </div>
+    
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="d-flex flex-column justify-content-center book-section mt-5">
+            <label class="d-flex justify-content-center">Price: <span class="detail">$500</span> </label>
+            <button type="button" class="btn btn-success mx-1 mt-3">Book Now</button>
+          </div>
+        </div>
+      </div>
+    
+    </div> -->
   </div>
 
 </div>

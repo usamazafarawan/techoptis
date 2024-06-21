@@ -19,17 +19,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let property of properties">
-        <td>{{ property.name }}</td>
-        <td>{{ property.date }}</td>
-        <td><img [src]="property.photo" alt="Photo" width="50"></td>
-        <td>{{ property.price }}</td>
-        <td>{{ property.service }}</td>
+        <td>{{ property?.name }}</td>
+        <td>{{ property?.date }}</td>
+        <td><img [src]="property?.photo" alt="Photo" width="50"></td>
+        <td>{{ property?.price }}</td>
+        <td>{{ property?.service }}</td>
         <td>
           <div class="button-group">
-            <button (click)="manageProperty(property.id)">Gérer</button>
-            <button (click)="openCalendar(property.id)">Calendrier</button>
-            <button (click)="confirmDelete(property.id)">Supprimer</button>
-            <button (click)="editProperty(property.id)">Modifier</button>
+            <button (click)="manageProperty(property.id ||1)">Gérer</button>
+            <button (click)="openCalendar(property.id ||1)">Calendrier</button>
+            <button (click)="confirmDelete(property.id||1)">Supprimer</button>
+            <button (click)="editProperty(property.id || 1)">Modifier</button>
           </div>
         </td>
       </tr>

@@ -3,13 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Property, ImmobilierService } from '../../immobilier.service';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-list-location',
   templateUrl: './list-location.component.html',
   styleUrls: ['./list-location.component.css'],
   standalone: true,
-  imports: [CommonModule, RouterModule] 
+  imports: [CommonModule, RouterModule,MatIconModule] 
 })
 export class ListLocationComponent implements OnInit {
   searchResults: Property[] = [];
@@ -23,7 +24,7 @@ export class ListLocationComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const address = params['address'] || '';
-      this.searchResults = this.immobilierService.getProperties().filter(property =>
+      this.searchResults = this.immobilierService.getProperties().filter((property:any) =>
         property.city.toLowerCase().includes(address.toLowerCase())
       );
       this.filteredProperties = this.searchResults;
