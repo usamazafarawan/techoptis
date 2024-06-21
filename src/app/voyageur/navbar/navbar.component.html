@@ -35,8 +35,17 @@
             </form>
           </li>
         </ul>
-        <img src="assets/images/bonhomme.png" alt="User Icon" class="user-icon ms-auto"  (click)="navigateToLogin()">
+        <img [matMenuTriggerFor]="menu" src="assets/images/bonhomme.png" alt="User Icon" class="user-icon ms-auto">
       </div>
     </div>
   </nav>
-  
+  <mat-menu #menu="matMenu">
+    @if (!userProfile.email) {
+      <button mat-menu-item (click)="navigateToLogin()">Login</button>
+      <button mat-menu-item (click)="navigateToSignup()">Sign Up</button>
+    } @else {
+     <div>
+      <p class="p-2">{{userProfile.email}}</p>
+     </div>
+    }
+  </mat-menu>

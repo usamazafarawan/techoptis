@@ -45,14 +45,14 @@ export class LoginComponent implements OnInit {
 
 
   onSave() {
-    this.toaster.info("asassa")
     // this.submitted = true
     // console.log(this.formGroup.value)
     // console.log(this.formGroup.invalid)
-    // if (this.formGroup.invalid) {
-    //   this.formInvalid = true
-    //   return
-    // }
+    if (this.formGroup.invalid) {
+      this.formInvalid = true
+      return
+    }
+    localStorage.setItem("userProfile", JSON.stringify(this.formGroup.value));
     // else {
     //   let data = {
     //     email: this.formGroup.value.email,
