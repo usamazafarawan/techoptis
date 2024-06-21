@@ -1,6 +1,10 @@
 
   .outer-section{
     height: 100vh;
+    background-color: #fff;
+}
+.inner-section{
+  background-color: #fff;
 }
 h2.text-center {
   margin-top: 20px;
