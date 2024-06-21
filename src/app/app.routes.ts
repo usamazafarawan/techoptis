@@ -13,11 +13,12 @@ import { ChatbotComponent } from './voyageur/chatbot/chatbot.component';
 import { FactureComponent } from './voyageur/facture/facture.component';
 import { FacturePaiementComponent } from './voyageur/facture-paiement/facture-paiement.component';
 import { ListLocationComponent } from './voyageur/list-location/list-location.component';
-import { PrestationComponent } from './voyageur/prestation/prestation.component';
+import { CompteComponent } from './voyageur/prestation/compte.component';
 import { ReservationComponent } from './voyageur/reservation/reservation.component';
 import { DescriptionComponent } from './voyageur/description/description.component';
 import { LoginComponent } from './voyageur/login/login.component';
 import { signupComponent } from './voyageur/signup/signup.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -37,16 +38,14 @@ const routes: Routes = [
       { path: 'facture', component: FactureComponent },
       { path: 'facture-paiement', component: FacturePaiementComponent },
       { path: 'list-location', component: ListLocationComponent },
-      { path: 'prestation', component: PrestationComponent },
-      { path: 'reservation', component: ReservationComponent },
+      { path: 'Compte', component: CompteComponent,  canActivate: [authGuard] },
+      { path: 'reservation', component: ReservationComponent,   canActivate: [authGuard] },
       { path: 'description/:id', component: DescriptionComponent }, 
       { path: 'se-connecter', component: LoginComponent }, 
       { path: 'registre', component: signupComponent }, 
     ]
   },
-  // { path: 'abonnement', component: AbonnementComponent },
-  // {path: 'chatbot', component: ChatbotComponent },
-  // { path: 'registre', component: signupComponent }, 
+  // canActivate: [authGuard] 
   { path: '', redirectTo: '/voyageur/registre', pathMatch: 'full' },
   { path: '**', redirectTo: '/voyageur/registre' }
 ];

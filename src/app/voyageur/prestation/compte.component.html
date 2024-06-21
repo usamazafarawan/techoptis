@@ -1,0 +1,53 @@
+<div class="outer-section">
+    <h3 class="d-flex justify-content-center mt-3">User Account</h3>
+    <div class="container">
+        <form action="" [formGroup]="userForm">
+            <div class="form-group mb-1">
+                <div class="row">
+                    <div class="col">
+                        <label for="arrival">Prénom
+                        </label>
+                        <input type="text" formControlName="firstName" class="form-control" id="first-name" placeholder="Entrez votre prénom
+                ">
+                    </div>
+                    <div class="col">
+                        <label for="departure">Nom de famille
+                        </label>
+                        <input type="text" formControlName="lastName" class="form-control" id="last-name" placeholder="Ingrese su apellido
+                ">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="address">E-mail </label>
+                <input type="text" class="form-control" id="address" readonly formControlName="email" placeholder="E-mail">
+             
+            </div>
+            <div class="form-group mb-3">
+                <label for="address">Numéro de téléphone </label>
+                <input type="text" formControlName="phoneNumber"  class="form-control" id="address" placeholder="Numéro de téléphone">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button [disabled]="userForm.invalid" (click)="saveUserInfo()" type="submit" class="btn btn-warning "
+                    style="align-items: center;">sauvegarder
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="d-flex  flex-row justify-content-around " >
+        <button (click)="navigate('/voyageur/abonnement')"  type="submit" class="btn btn-dark "
+        style="align-items: center;">Abonnement
+    </button>
+    <button (click)="navigate('/voyageur/facture')" type="submit" class="btn btn-dark "
+    style="align-items: center;">Facture
+
+</button>
+<button (click)="navigate('/voyageur/list-location')" type="submit" class="btn btn-dark "
+style="align-items: center;">List Location
+
+</button>
+    </div>
+  
+
+</div>

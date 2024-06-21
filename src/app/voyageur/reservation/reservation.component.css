@@ -3,3 +3,12 @@
     background-color: #fff;
 
 }
+.property-images{
+    width: 200;
+    height: 50;
+    border-radius: 10%;
+  }
+  .detail{
+    font-weight: 400;
+    margin-left: 10px;
+  }

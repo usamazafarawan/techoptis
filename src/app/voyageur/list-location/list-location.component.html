@@ -53,7 +53,7 @@
           <div class="col-3">
             <div class="d-flex flex-column justify-content-center book-section mt-5">
               <label class="d-flex justify-content-center">Price: <span class="detail">${{property.price}}</span> </label>
-              <button type="button" class="btn btn-success mx-1 mt-3">Book Now</button>
+              <button type="button" class="btn btn-success mx-1 mt-3" [disabled]="checkReservation(property)" (click)="bookNow(property)" > {{ checkReservation(property) ? 'Booked':'Book Now'}}  </button>
             </div>
           </div>
         </div>
