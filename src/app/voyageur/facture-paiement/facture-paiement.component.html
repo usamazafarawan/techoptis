@@ -1,5 +1,10 @@
 
 <div class="outer-section">
-    <p>facture-paiement works!</p>
-ca va permettre de payer la facture avec stripe
+  <ngx-stripe-card
+  [options]="cardOptions"
+  [elementsOptions]="elementsOptions"
+  #cardComponent>
+</ngx-stripe-card>
+
+<button (click)="handlePayment()">Pay</button>
 </div>
