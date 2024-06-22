@@ -98,7 +98,7 @@ export class FactureComponent implements OnInit {
     this.router.navigate(['/voyageur/facture-paiement'], {
       queryParams: {
         paid: property.paid,
-        price: property.price,
+        price: Number(property.price*1.1).toFixed(0),
         propertyId: property.propertyId,
         propertyName: property.propertyName,
         type: 'property',

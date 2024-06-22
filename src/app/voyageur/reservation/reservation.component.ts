@@ -107,5 +107,6 @@ export class ReservationComponent implements OnInit {
       );
     }
     this.toaster.success('Réservation ajoutée avec succès');
+    this.router.navigate(['/voyageur/facture']);
   }
 }
