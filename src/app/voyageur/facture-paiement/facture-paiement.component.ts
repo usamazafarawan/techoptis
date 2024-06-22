@@ -48,6 +48,7 @@ export class FacturePaiementComponent implements OnInit {
   amount: number = 200;
   userProfile:any={}
   selectedSubscription:any[]=[]
+  reservationDetails:any[]=[];
 
   checkoutForm = this.fb.group({
     name: ['', [Validators.required]],
@@ -91,7 +92,7 @@ export class FacturePaiementComponent implements OnInit {
     this.currentData ={ };
     this.userProfile = JSON.parse(localStorage.getItem('userProfile') as any) || {};
     this.selectedSubscription = JSON.parse(localStorage.getItem('userSubscription') as any) || {};
-   
+    this.reservationDetails = JSON.parse(localStorage.getItem('reservationsDetails') as any);
 
     this.route.queryParams.subscribe((params:any) => {
       console.log('params: ', params);
@@ -99,6 +100,9 @@ export class FacturePaiementComponent implements OnInit {
         this.currentData = params;
         if(params.type==='subscription'){
           this.amount = Number(this.currentData.subPrice)
+        }
+        if(params.type==='property'){
+          this.amount = Number(this.currentData.price)
         }
       }
       else{
@@ -165,6 +169,9 @@ export class FacturePaiementComponent implements OnInit {
             if(this.currentData.type === 'subscription'){
               this.subcriptionRecordUpdate();
             }
+            if(this.currentData.type === 'property'){
+               this.propertyRecordUpadte();
+            }
           }
         },
         error: (err) => {
@@ -192,4 +199,22 @@ export class FacturePaiementComponent implements OnInit {
     localStorage.setItem("userSubscription", JSON.stringify(this.selectedSubscription));
     this.router.navigate(['voyageur/abonnement'])
   }
+  propertyRecordUpadte(){
+
+    if (this.reservationDetails && this.userProfile) {
+      const userReservationInfoIndex = this.reservationDetails.findIndex(
+        (reservation: any) =>
+          reservation.userName === this.userProfile.name &&
+          reservation.userEmail == this.userProfile.email
+      );
+      this.reservationDetails[userReservationInfoIndex].reservationdetails.forEach((detail:any)=>{
+        if(Number(detail.propertyId)== Number(this.currentData.propertyId)){
+          detail.paid=true;
+        }
+      })
+
+    localStorage.setItem("reservationsDetails", JSON.stringify(this.reservationDetails));
+    this.router.navigate(['voyageur/facture'])
+  }
+}
 }
