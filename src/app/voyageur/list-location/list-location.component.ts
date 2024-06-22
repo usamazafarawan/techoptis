@@ -23,8 +23,8 @@ export class ListLocationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      const address = params['address'] || '';
+    this.route.queryParams.subscribe((params:any) => {
+      const address = params.query || '';
       this.searchResults = this.immobilierService
         .getProperties()
         .filter((property: any) =>
