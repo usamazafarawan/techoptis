@@ -74,6 +74,8 @@ export class ReservationComponent implements OnInit {
           departureDate: this.reservationForm.value.departureDate,
           adults: this.reservationForm.value.adults,
           childrens: this.reservationForm.value.childrens,
+          paid:false,
+          type:'property'
         });
         localStorage.setItem(
           'reservationsDetails',
@@ -95,6 +97,8 @@ export class ReservationComponent implements OnInit {
         departureDate: this.reservationForm.value.departureDate,
         adults: this.reservationForm.value.adults,
         childrens: this.reservationForm.value.childrens,
+        paid:false,
+        type:'property'
       });
       reservationDetails.push(reservatinUserDetails);
       localStorage.setItem(

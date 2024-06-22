@@ -7,7 +7,7 @@
         <div class="message"
         [ngClass]="{ 'from': message.author === 'bot',
         'to': message.author === 'user' }">
-        {{ message.content }}
+      {{message.author === 'bot'? 'Bot:':"You :" }}  {{ message.content }}
         </div>
     }
 

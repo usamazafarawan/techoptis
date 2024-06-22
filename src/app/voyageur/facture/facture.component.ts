@@ -1,12 +1,85 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ImmobilierService, Property } from '../../immobilier.service';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-facture',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, ReactiveFormsModule,CommonModule ,MatIconModule],
   templateUrl: './facture.component.html',
-  styleUrl: './facture.component.css'
+  styleUrl: './facture.component.css',
 })
-export class FactureComponent {
+export class FactureComponent implements OnInit {
+  userDetails: any;
+  reservationDetails: any[] = [];
+  currentDate: Date = new Date();
+  currentIndex:number=-1;
 
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private immobilierService: ImmobilierService,
+    private fb: FormBuilder,
+    private toaster: ToastrService
+  ) {
+    this.userDetails = {};
+   
+    /////
+  }
+
+  ngOnInit(): void {
+    const userInfo: any =
+      JSON.parse(localStorage.getItem('userInfo') as any) || {};
+    const userProfile: any =
+      JSON.parse(localStorage.getItem('userProfile') as any) || {};
+      const reservationDetails: any = JSON.parse(
+        localStorage.getItem('reservationsDetails') as any
+      );
+
+    this.userDetails = {
+      name: userProfile.name,
+      email: userProfile.email,
+      phoneNumber: userInfo.phoneNumber ? userInfo.phoneNumber :"---",
+      address: userInfo.adress ? userInfo.adress : "---",
+    };
+
+    console.log(" this.userDetails", this.userDetails);
+    if (reservationDetails && userInfo) {
+      const userReservationInfoIndex = reservationDetails.findIndex(
+        (reservation: any) =>
+          reservation.userName === userProfile.name &&
+          reservation.userEmail == userProfile.email
+      );
+      console.log('userReservationInfoIndex: ', userReservationInfoIndex);
+
+      if (userReservationInfoIndex > -1) {
+       this.currentIndex = userReservationInfoIndex;
+        console.log('userReservationInfoIndex: ', userReservationInfoIndex);
+this.reservationDetails = reservationDetails[userReservationInfoIndex].reservationdetails;
+console.log('this.reservationDetails: ', this.reservationDetails);
+      }
+    }
+  }
+
+  deleteReservation(propertyId:any){
+    this.reservationDetails.splice(this.reservationDetails.findIndex((detaial:any)=> detaial.propertyId == propertyId), 1)
+    const reservationDetails: any = JSON.parse(
+      localStorage.getItem('reservationsDetails') as any
+    );
+
+    reservationDetails[this.currentIndex].reservationdetails = this.reservationDetails;
+    localStorage.setItem("reservationsDetails",JSON.stringify(reservationDetails));
+    this.toaster.success("Réservation supprimée avec succès");
+  }
 }

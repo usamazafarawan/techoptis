@@ -33,9 +33,9 @@ const routes: Routes = [
   },
   {
     path: 'voyageur', component: VoyageurComponent, children: [
-      { path: 'abonnement', component: AbonnementComponent },
+      { path: 'abonnement', component: AbonnementComponent  ,canActivate: [authGuard] },
       { path: 'chatbot', component: ChatbotComponent },
-      { path: 'facture', component: FactureComponent },
+      { path: 'facture', component: FactureComponent  ,canActivate: [authGuard] },
       { path: 'facture-paiement', component: FacturePaiementComponent },
       { path: 'list-location', component: ListLocationComponent },
       { path: 'Compte', component: CompteComponent,  canActivate: [authGuard] },

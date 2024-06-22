@@ -40,6 +40,8 @@ export class CompteComponent implements OnInit {
         ],
       ],
       phoneNumber: ['', [Validators.required]],
+      adress: ['', [Validators.required]],
+
     });
   }
 

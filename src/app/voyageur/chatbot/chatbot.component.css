@@ -12,15 +12,18 @@
     font-size: 20px;
   }
   .message.to {
-    background-color: #2095FE;
-    color: #fff;
-    margin-left: 100px;
-    text-align: right;
-  }
-  .message.from {
-    background-color: #E5E4E9;
+    /* background-color: #2095FE; */ 
+  
+
     color: #363636;
     margin-right: 100px;
+  }
+  .message.from {
+        /*    background-color: #E5E4E9;
+ */ 
+ margin-left: 100px;
+ text-align: right;
+ color: #713535;
   }
   .message.to + .message.to,
   .message.from + .message.from {

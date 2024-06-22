@@ -1,10 +1,79 @@
 <div class="outer-section">
 
-  <p>abonnement works!</p>
-  ca va lister et afficher l'abonnement que le client a et lui permettre de le resilier 
-  <div>
-      <h2>Abonnement</h2>
-     
-    </div>
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Pricing</h1>
+    <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
+  </div>
+
+  <div class="d-flex flex-row justify-content-center container">
+      <div class="card mb-2  box-shadow col-4   text-center">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal ">Basic</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$20 <small class="text-muted">/ mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>1 person included</li>
+            <li>1 Meal will Offer storage</li>
+            <li>Free HotSpot will provide</li>
+            <li>Medical Aid Will Provide</li>
+          </ul>
+          @if(selectedSubscription.length && selectedSubscription[userIndex]?.subType=='Basic'){
+            <button type="button" class="btn btn-lg btn-block btn-success">abonnée</button>
+          }
+          @else {
+            <button type="button" (click)="subscribe('Basic',20)" class="btn btn-lg btn-block btn-outline-primary">S'abonner</button>
+
+          }
+        </div>
+      </div>
+
+
+      <div class="card mb-2 ml-1 box-shadow col-4 text-center">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Pro</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$30 <small class="text-muted">/ mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>3 person's included</li>
+            <li>3 Meal's will Offer storage</li>
+            <li>Free HotSpot will provide</li>
+            <li>Medical Aid Will Provide</li>
+          </ul>
+          @if(selectedSubscription.length && selectedSubscription[userIndex]?.subType=='Pro'){
+            <button type="button" class="btn btn-lg btn-block btn-success">abonnée</button>
+          }
+          @else {
+            <button type="button" (click)="subscribe('Pro',30)" class="btn btn-lg btn-block btn-outline-primary">S'abonner</button>
+          }
+        </div>
+      </div>
+
+
+      <div class="card mb-2 ml-1 box-shadow col-4  text-center">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Enterprise</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$50 <small class="text-muted">/ mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>5 person's included</li>
+            <li>5 Meal's will Offer storage</li>
+            <li>Free HotSpot will provide</li>
+            <li>Medical Aid Will Provide</li>
+          </ul>
+          @if(selectedSubscription.length && selectedSubscription[userIndex]?.subType=='Enterprise'){
+            <button type="button" class="btn btn-lg btn-block btn-success">abonnée</button>
+          }
+          @else {
+            <button type="button" (click)="subscribe('Enterprise',50)" class="btn btn-lg btn-block btn-outline-primary">S'abonner</button>
+
+          }
+        </div>
+      </div>
+
+
+  </div>
     
 </div>

@@ -1,5 +1,181 @@
 
 <div class="outer-section">
-    <p>facture works!</p>
-ca va afficher la liste des facture du client 
+    <div class="container">
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="invoice-title">
+                                <h4 class="float-end font-size-15">Invoice #DS0204</h4>
+                                <div class="mb-4">
+                                   <h2 class="mb-1 text-muted">Techpotis.com</h2>
+                                </div>
+                                <div class="text-muted">
+                                    <p class="mb-1">3184 Spruce Drive Pittsburgh, PA 15201</p>
+                                    <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> xyz987.com</p>
+                                    <p><i class="uil uil-phone me-1"></i> 012-345-6789</p>
+                                </div>
+                            </div>
+        
+                            <hr class="my-4">
+        
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="text-muted">
+                                        <h5 class="font-size-16 mb-3">Billed To:</h5>
+                                        <h5 class="font-size-15 mb-2">{{userDetails.name}}</h5>
+                                        <p class="mb-1">{{userDetails.address}}</p>
+                                        <p class="mb-1">{{userDetails.email}}</p>
+                                        <p>{{userDetails.phoneNumber}}</p>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-sm-6">
+                                    <div class="text-muted text-sm-end">
+                                        <div>
+                                            <h5 class="font-size-15 mb-1">Invoice No:</h5>
+                                            <p>#DZ0112</p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h5 class="font-size-15 mb-1">Invoice Date:</h5>
+                                            <p>{{ currentDate | date:'dd MMM, yyyy' }}</p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h5 class="font-size-15 mb-1">Order No:</h5>
+                                            <p>#1123456</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            
+                            <div class="py-2">
+                                <h5 class="font-size-15">Reservation Summary</h5>
+        
+                                <div class="table-responsive">
+                                    <table class="table align-middle table-nowrap table-centered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 70px;">No.</th>
+                                                <th>Item</th>
+                                                <th>Price</th>
+                                                <th>Tax</th>
+                                                <th class="" >Total</th>
+                                                <th class="text-end">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                            @for (property of reservationDetails; track $index;let  i = $index) {
+                                                <tr>
+                                                    <th scope="row">{{i+1}}</th>
+                                                    <td>
+                                                        <div>
+                                                            <h5 class="text-truncate font-size-14 mb-1">{{property.propertyName}}</h5>
+                                                            <p class="text-muted mb-0">Arrival Date:{{property.arrivalDate}}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td>$ {{property.price}}</td>
+                                                    <td>10%</td>
+                                                    <td >$ {{(property.price*1.1).toFixed(0)}}</td>
+                                                    <td class="text-end">
+                                               
+
+                                                    @if(property?.paid){
+                                                        <button   type="submit" class="btn btn-success "
+                                                        style="align-items: center;">Payé
+
+                                                    </button>
+                                                    }
+                                                    @else{
+                                                        <div class="d-flex flex-column justify-content-center" style="align-items: center;">
+                                                        <button   type="submit" class="btn btn-danger "
+                                                        style="align-items: center;">Payer
+                                                    </button>
+
+                                               <div class="d-flex flex-row justify-content-center">                                           
+                                                  <span style="  visibility: hidden;">Delete icon</span>
+                                                  <mat-icon (click)="deleteReservation(property?.propertyId)" class="d-flex justify-content-center delete-icon" style="align-items: center; " style="color: #ffc107;">delete</mat-icon>
+                                               </div>
+                                              
+                                                </div>                                             
+                                                   }
+                                                    </td>
+    
+                                                </tr>
+                                            
+                                            }
+                                            <!-- <tr>
+                                                <th scope="row">01</th>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="text-truncate font-size-14 mb-1">Black Strap A012</h5>
+                                                        <p class="text-muted mb-0">Watch, Black</p>
+                                                    </div>
+                                                </td>
+                                                <td>$ 245.50</td>
+                                                <td>10%</td>
+                                                <td class="">$ 245.50</td>
+                                                <td class="text-end">
+
+                                                    <button   type="submit" class="btn btn-danger "
+                                                    style="align-items: center;">Payer
+                                                </button>
+                                                </td>
+
+                                            </tr> -->
+                                            <!-- <tr>
+                                                <th scope="row">02</th>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="text-truncate font-size-14 mb-1">Stainless Steel S010</h5>
+                                                        <p class="text-muted mb-0">Watch, Gold</p>
+                                                    </div>
+                                                </td>
+                                                <td>$ 245.50</td>
+                                                <td>10%</td>
+                                                <td class="">$491.00</td>
+                                                <td class="text-end">Un-Paid</td>
+
+                                            </tr> -->
+                                            <!-- <tr>
+                                                <th scope="row" colspan="4" class="text-end">Sub Total</th>
+                                                <td class="text-end">$732.50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" colspan="4" class="border-0 text-end">
+                                                    Discount :</th>
+                                                <td class="border-0 text-end">- $25.50</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" colspan="4" class="border-0 text-end">
+                                                    Shipping Charge :</th>
+                                                <td class="border-0 text-end">$20.00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" colspan="4" class="border-0 text-end">
+                                                    Tax</th>
+                                                <td class="border-0 text-end">$12.00</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                                <td class="border-0 text-end"><h4 class="m-0 fw-semibold">$739.00</h4></td>
+                                            </tr>
+                                           -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- <div class="d-print-none mt-4">
+                                    <div class="float-end">
+                                        <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
+                                        <a href="#" class="btn btn-primary w-md">Send</a>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+            </div>
+        </div>
 </div>
