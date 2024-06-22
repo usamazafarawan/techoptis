@@ -48,26 +48,15 @@ export class AbonnementComponent implements OnInit {
   }
 
   subscribe(subsritionType:string,price:number){
-    const selectedSubscription={
-      subType:subsritionType,
+    this.router.navigate(['/voyageur/facture-paiement'], {
+      queryParams: {
+        subType:subsritionType,
       subPrice:price,
       userName:this.userProfile.name,
       userEmail:this.userProfile.email,
-    }
-
-    if(this.selectedSubscription?.length){
-      this.userIndex = this.selectedSubscription.findIndex((user)=> user.userEmail == this.userProfile.email)
-      if(this.userIndex>-1){
-        this.selectedSubscription[this.userIndex]=selectedSubscription
-      } 
-    }
-    else{
-       this.userIndex=0;
-       this.selectedSubscription=[];
-            this.selectedSubscription.push(selectedSubscription)  ;
-            this.selectedSubscription =[...this.selectedSubscription]
-    }
-    localStorage.setItem("userSubscription", JSON.stringify(this.selectedSubscription));
+      type:'subscription'
+      }
+    });
 
   }
 

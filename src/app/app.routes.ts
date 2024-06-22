@@ -33,13 +33,13 @@ const routes: Routes = [
   },
   {
     path: 'voyageur', component: VoyageurComponent, children: [
-      { path: 'abonnement', component: AbonnementComponent  ,canActivate: [authGuard] },
+      { path: 'abonnement', component: AbonnementComponent   },
       { path: 'chatbot', component: ChatbotComponent },
-      { path: 'facture', component: FactureComponent  ,canActivate: [authGuard] },
+      { path: 'facture', component: FactureComponent   },
       { path: 'facture-paiement', component: FacturePaiementComponent },
       { path: 'list-location', component: ListLocationComponent },
-      { path: 'Compte', component: CompteComponent,  canActivate: [authGuard] },
-      { path: 'reservation', component: ReservationComponent,   canActivate: [authGuard] },
+      { path: 'Compte', component: CompteComponent,   },
+      { path: 'reservation', component: ReservationComponent,    },
       { path: 'description/:id', component: DescriptionComponent }, 
       { path: 'se-connecter', component: LoginComponent }, 
       { path: 'registre', component: signupComponent }, 

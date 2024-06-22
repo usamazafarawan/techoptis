@@ -62,7 +62,6 @@
           <button
             mat-stroked-button
             color="warn"
-            [disabled]="paying"
             (click)="clear()"
             style="margin-right: 16px"
           >
@@ -78,7 +77,7 @@
             <span>PROCESSING...</span>
             } @else {
             <span>
-              PAY @if (amount) {
+              PAY $ @if (amount) {
               <span>{{ amount  }}</span>
               }
             </span>

@@ -17,7 +17,7 @@ import {
   StripePaymentElementComponent,
 } from 'ngx-stripe';
 import { PlutoService, STRIPE_PUBLIC_KEY } from '../../pluto.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-facture-paiement',
@@ -46,13 +46,15 @@ export class FacturePaiementComponent implements OnInit {
   private readonly plutoService = inject(PlutoService);
   readonly stripe = injectStripe(STRIPE_PUBLIC_KEY);
   amount: number = 200;
+  userProfile:any={}
+  selectedSubscription:any[]=[]
 
   checkoutForm = this.fb.group({
-    name: ['Ricardo', [Validators.required]],
-    email: ['support@ngx-stripe.dev', [Validators.required]],
-    address: ['Av. Ramon Nieto 313B 2D', [Validators.required]],
-    zipcode: ['36205', [Validators.required]],
-    city: ['Vigo', [Validators.required]],
+    name: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    address: ['', [Validators.required]],
+    zipcode: ['', [Validators.required]],
+    city: ['', [Validators.required]],
     // amount: [2500, [Validators.required]],
   });
 
@@ -68,9 +70,11 @@ export class FacturePaiementComponent implements OnInit {
   };
 
   paying = signal(false);
+  currentData:any={}
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private toaster: ToastrService
   ) {}
 
@@ -84,6 +88,24 @@ export class FacturePaiementComponent implements OnInit {
   ngOnInit() {
     // const amount = this.checkoutForm.get('amount')?.value;
     // console.log('amount: ', amount);
+    this.currentData ={ };
+    this.userProfile = JSON.parse(localStorage.getItem('userProfile') as any) || {};
+    this.selectedSubscription = JSON.parse(localStorage.getItem('userSubscription') as any) || {};
+   
+
+    this.route.queryParams.subscribe((params:any) => {
+      console.log('params: ', params);
+      if(params){
+        this.currentData = params;
+        if(params.type==='subscription'){
+          this.amount = Number(this.currentData.subPrice)
+        }
+      }
+      else{
+        this.currentData ={ }
+      }
+     
+    });
 
     this.plutoService.createPaymentIntent({
         amount:this.amount,
@@ -140,6 +162,9 @@ export class FacturePaiementComponent implements OnInit {
             console.log("success");
             this.toaster.success("Amount Submitted Successfully")
 
+            if(this.currentData.type === 'subscription'){
+              this.subcriptionRecordUpdate();
+            }
           }
         },
         error: (err) => {
@@ -150,5 +175,21 @@ export class FacturePaiementComponent implements OnInit {
         
         },
       });
+  }
+
+  subcriptionRecordUpdate(){
+    if(this.selectedSubscription?.length){
+      const userIndex = this.selectedSubscription.findIndex((user:any)=> user.userEmail == this.userProfile.email)
+      if(userIndex>-1){
+        this.selectedSubscription[userIndex]=this.currentData
+      } 
+    }
+    else{
+       this.selectedSubscription=[];
+            this.selectedSubscription.push(this.currentData)  ;
+            this.selectedSubscription =[...this.selectedSubscription]
+    }
+    localStorage.setItem("userSubscription", JSON.stringify(this.selectedSubscription));
+    this.router.navigate(['voyageur/abonnement'])
   }
 }
