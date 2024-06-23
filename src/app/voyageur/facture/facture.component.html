@@ -60,6 +60,10 @@
                                                 <th>Item</th>
                                                 <th>Price</th>
                                                 <th>Tax</th>
+                                     @if(userInfo?.breakfast || userInfo?.cleaning){
+                                         <th>Services</th>
+                                                              }
+
                                                 <th class="" >Total</th>
                                                 <th class="text-end">Status</th>
                                             </tr>
@@ -78,7 +82,19 @@
                                                     </td>
                                                     <td>$ {{property.price}}</td>
                                                     <td>10%</td>
-                                                    <td >$ {{(property.price*1.1).toFixed(0)}}</td>
+                                                    @if(userInfo?.breakfast || userInfo?.cleaning){
+                                                        <td>
+                                                            @if(userInfo?.breakfast){
+                                                                Breakfast: $10
+                                                            }
+                                                            @if(userInfo?.breakfast && userInfo?.cleaning){ <br>}
+                                                            @if(userInfo?.cleaning){
+                                                                Cleaning : $5
+                                                            }
+                                                            <br>
+                                                        </td>
+                                                    }
+                                                    <td >$ {{(property.price*1.1 +(userInfo?.breakfast ?10:0) +(userInfo?.cleaning ?5:0) ).toFixed(0)}}</td>
                                                     <td class="text-end">
                                                
 

@@ -41,6 +41,8 @@ export class CompteComponent implements OnInit {
       ],
       phoneNumber: ['', [Validators.required]],
       adress: ['', [Validators.required]],
+      breakfast: [false],
+      cleaning: [false],
 
     });
   }

@@ -16,6 +16,7 @@ export class ReservationComponent implements OnInit {
   allProperties: Property[] = [];
   selectedProperty: any = {};
   reservationForm: FormGroup;
+  userInfo:any={};
 
   constructor(
     private router: Router,
@@ -34,6 +35,7 @@ export class ReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo') as any) || {};
     this.allProperties = this.immobilierService.getProperties();
     this.route.queryParams.subscribe((params: any) => {
       if (params?.propertyId) {

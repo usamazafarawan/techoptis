@@ -23,6 +23,33 @@
                         <label>Rooms: <span class="detail">{{selectedProperty?.rooms}}</span> </label>
                         <label>City: <span class="detail">{{selectedProperty?.city}}</span> </label>
                         <label>Description: <span class="detail">{{selectedProperty?.description}}</span> </label>
+                    
+                    @if(userInfo?.breakfast || userInfo?.cleaning ){
+                      <div class="row mt-5">
+                        @if(userInfo?.breakfast){
+                          <div class="col-6 ">
+                            <div class="form-check">
+                                <input class="form-check-input" [checked]="true" type="checkbox" disabled [readOnly]="true"  value="" id="flexCheckDefault">
+                                <span class="form-check-label" for="flexCheckDefault">
+                                    Petit-déjeuner à 10 $
+                                </span>
+                            </div>
+                        </div>
+                        }
+                        @if(userInfo?.cleaning){
+                          <div class="col-6 ">
+                            <div class="form-check">
+                                <input class="form-check-input services" [checked]="true" disabled  [readOnly]="true"  type="checkbox" value="" id="flexCheckDefault">
+                                <span class="form-check-label" style="color: black;" for="flexCheckDefault">
+                                    Nettoyage pour 5 $
+                                </span>
+                            </div>
+                        </div>
+                        }
+                     
+                    </div>
+                    }
+                    
                       </div>
                     </div>
                   </div>

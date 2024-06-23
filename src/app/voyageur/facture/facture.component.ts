@@ -24,7 +24,7 @@ export class FactureComponent implements OnInit {
   reservationDetails: any[] = [];
   currentDate: Date = new Date();
   currentIndex: number = -1;
-
+  userInfo:any={};
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -38,7 +38,7 @@ export class FactureComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userInfo: any =
+    this.userInfo =
       JSON.parse(localStorage.getItem('userInfo') as any) || {};
     const userProfile: any =
       JSON.parse(localStorage.getItem('userProfile') as any) || {};
@@ -49,12 +49,12 @@ export class FactureComponent implements OnInit {
     this.userDetails = {
       name: userProfile.name,
       email: userProfile.email,
-      phoneNumber: userInfo.phoneNumber ? userInfo.phoneNumber : '---',
-      address: userInfo.adress ? userInfo.adress : '---',
+      phoneNumber: this.userInfo.phoneNumber ? this.userInfo.phoneNumber : '---',
+      address: this.userInfo.adress ? this.userInfo.adress : '---',
     };
 
     console.log(' this.userDetails', this.userDetails);
-    if (reservationDetails && userInfo) {
+    if (reservationDetails && this.userInfo) {
       const userReservationInfoIndex = reservationDetails.findIndex(
         (reservation: any) =>
           reservation.userName === userProfile.name &&
@@ -98,7 +98,7 @@ export class FactureComponent implements OnInit {
     this.router.navigate(['/voyageur/facture-paiement'], {
       queryParams: {
         paid: property.paid,
-        price: Number(property.price*1.1).toFixed(0),
+        price: Number(property.price*1.1+(this.userInfo?.breakfast ?10:0) +(this.userInfo?.cleaning ?5:0)).toFixed(0),
         propertyId: property.propertyId,
         propertyName: property.propertyName,
         type: 'property',
